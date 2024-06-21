@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwk63fnic1bs6"]
+[gd_scene load_steps=7 format=3 uid="uid://dwk63fnic1bs6"]
 
 [ext_resource type="Texture2D" uid="uid://b5qthij7jil65" path="res://icon.svg" id="1_2sap4"]
-[ext_resource type="Script" path="res://CharacterBody2D.gd" id="2_fgthh"]
-[ext_resource type="Texture2D" uid="uid://docexb44y5j7f" path="res://Ball.png" id="3_beqjw"]
+[ext_resource type="Script" path="res://node_2d.gd" id="1_x8lnr"]
+[ext_resource type="PackedScene" uid="uid://dhmxe5bmijlus" path="res://Player.tscn" id="3_5vcd3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yg36b"]
 size = Vector2(116, 122)
@@ -13,13 +13,11 @@ size = Vector2(1204, 122)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcasm"]
 size = Vector2(120, 117)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fsf0x"]
-radius = 13.0
-
 [node name="Main" type="Node2D"]
+script = ExtResource("1_x8lnr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(276, 256)
+position = Vector2(278, 422)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture = ExtResource("1_2sap4")
@@ -28,7 +26,7 @@ texture = ExtResource("1_2sap4")
 shape = SubResource("RectangleShape2D_yg36b")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(410, 463)
+position = Vector2(464, 373)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
 texture = ExtResource("1_2sap4")
@@ -46,7 +44,7 @@ texture = ExtResource("1_2sap4")
 shape = SubResource("RectangleShape2D_yg36b")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(977, 408)
+position = Vector2(849, 256)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4"]
 texture = ExtResource("1_2sap4")
@@ -55,7 +53,7 @@ texture = ExtResource("1_2sap4")
 shape = SubResource("RectangleShape2D_yg36b")
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="."]
-position = Vector2(707, 453)
+position = Vector2(637, 287)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D5"]
 texture = ExtResource("1_2sap4")
@@ -78,30 +76,22 @@ shape = SubResource("RectangleShape2D_ejeoe")
 [node name="StaticBody2D7" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D7"]
-position = Vector2(827, 153)
+position = Vector2(1037, 155)
 texture = ExtResource("1_2sap4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D7"]
-position = Vector2(828, 152.5)
+position = Vector2(1038, 154.5)
 shape = SubResource("RectangleShape2D_lcasm")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("2_fgthh")
+[node name="Next LVL" type="Button" parent="."]
+offset_left = 1001.0
+offset_top = 47.0
+offset_right = 1078.0
+offset_bottom = 78.0
+text = "Next LVL"
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(112, 290.375)
-scale = Vector2(0.068, 0.06525)
-texture = ExtResource("3_beqjw")
+[node name="Player" parent="." instance=ExtResource("3_5vcd3")]
+position = Vector2(850, 194)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(112, 283)
-shape = SubResource("CircleShape2D_fsf0x")
-
-[node name="Dash_Timer" type="Timer" parent="CharacterBody2D"]
-wait_time = 0.35
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(112, 283)
-zoom = Vector2(1.5, 1.5)
-
-[connection signal="timeout" from="CharacterBody2D/Dash_Timer" to="CharacterBody2D" method="_on_dash_timer_timeout"]
+[connection signal="pressed" from="Next LVL" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Next LVL" to="." method="_on_next_lvl_pressed"]

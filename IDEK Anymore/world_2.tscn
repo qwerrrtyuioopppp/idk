@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=3 uid="uid://3asn66oynapw"]
+
+[ext_resource type="Texture2D" uid="uid://b5qthij7jil65" path="res://icon.svg" id="1_65kgd"]
+[ext_resource type="Script" path="res://world_2.gd" id="1_e77pk"]
+[ext_resource type="PackedScene" uid="uid://dhmxe5bmijlus" path="res://Player.tscn" id="1_mlt0r"]
+[ext_resource type="Texture2D" uid="uid://fc2dwrc7d6sv" path="res://arrow.png" id="4_hligq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dobhl"]
+size = Vector2(355, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t644x"]
+size = Vector2(71.25, 351)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdlec"]
+size = Vector2(54, 359)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55wt1"]
+size = Vector2(133, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp7v0"]
+size = Vector2(178, 28)
+
+[node name="World_2" type="Node2D"]
+script = ExtResource("1_e77pk")
+
+[node name="Player" parent="." instance=ExtResource("1_mlt0r")]
+position = Vector2(-12, -189)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 984.0
+offset_top = 49.0
+offset_right = 1094.0
+offset_bottom = 80.0
+text = "Back to LVL 1"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(170.5, 225)
+scale = Vector2(2.75781, 1)
+texture = ExtResource("1_65kgd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(168.25, 225)
+shape = SubResource("RectangleShape2D_dobhl")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(322.5, 555)
+scale = Vector2(2.82031, 1)
+texture = ExtResource("1_65kgd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(322.5, 555)
+shape = SubResource("RectangleShape2D_dobhl")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+position = Vector2(924.125, 208)
+scale = Vector2(0.533204, 2.76563)
+texture = ExtResource("1_65kgd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(924.375, 206.5)
+shape = SubResource("RectangleShape2D_t644x")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D5"]
+position = Vector2(1138, 211)
+scale = Vector2(0.421875, 2.80469)
+texture = ExtResource("1_65kgd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
+position = Vector2(1139, 210.5)
+shape = SubResource("RectangleShape2D_hdlec")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4"]
+position = Vector2(1080, 120)
+scale = Vector2(1.03906, 0.273438)
+texture = ExtResource("1_65kgd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(1080.5, 119.5)
+shape = SubResource("RectangleShape2D_55wt1")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D6"]
+position = Vector2(1036, 22)
+scale = Vector2(1.40625, 0.21875)
+texture = ExtResource("1_65kgd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6"]
+position = Vector2(1036, 22)
+shape = SubResource("RectangleShape2D_vp7v0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(671, 464)
+scale = Vector2(0.336431, 0.351351)
+texture = ExtResource("4_hligq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1041, 436)
+rotation = -1.5708
+scale = Vector2(0.336431, 0.351351)
+texture = ExtResource("4_hligq")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,16 +1,16 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 const dash_speed = 1500.0
 var dashing = false
 var jump_count = 0
 var max_jumps = 3
+var boosted = 1500.0
+var boosting = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -46,6 +46,8 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
+	if Input.is_action_just_pressed("Pound"):
+		velocity.y = 1600
+		
 func _on_dash_timer_timeout():
 	dashing = false
